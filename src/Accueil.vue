@@ -50,7 +50,6 @@
 
 /* Overlay léger pour lisibilité */
 .accueil::before {
-    texte: "";
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.25);
