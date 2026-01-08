@@ -1,13 +1,14 @@
 <template>
   <div class="cow-list">
-    <div
+    <router-link
       v-for="cow in cows"
       :key="cow.id"
+      :to="`/cows/${cow.id}`"
       class="cow-card"
     >
       <img
         :src="cow.image"
-        :alt="cow.name"
+        :alt="cow.nom"
         class="cow-image"
       />
 
@@ -15,7 +16,7 @@
         <h2>{{ cow.nom }}</h2>
         <p>{{ cow.race }}</p>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
