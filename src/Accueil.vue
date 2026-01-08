@@ -1,15 +1,17 @@
 <template>
   <div class="accueil">
-
+    <div id="logo">
+        <img src="" alt="Logo de Cowbi">
+    </div>
     <!-- Contenu central -->
-    <div class="content">
+    <div class="texte">
       <p class="subtitle">AU COEUR DES PRAIRIES</p>
 
-      <h1>
+      <h2>
         L'APPLICATION QUI rassemble,<br />
         explore ET célèbre<br />
         TOUTES VOS VACHES.
-      </h1>
+      </h2>
 
         <Cta @click="goToCowLis">
             Découvrir
@@ -31,63 +33,67 @@
 </script>
 
 <style scoped>
+
 .accueil {
-  min-height: 100vh;
-  background-image: url('/img/accueil.webp');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  color: white;
-  padding: 24px;
-  display: flex;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('/img/accueil.webp');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    padding: 24px;
+    display: flex;
+    align-items: center;
 }
 
 /* Overlay léger pour lisibilité */
 .accueil::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.25);
+    texte: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
 }
 
-/* Burger */
-.burger {
+#logo {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  z-index: 2;
-}
-
-.burger span {
-  display: block;
-  width: 24px;
-  height: 3px;
-  background: #c08b6a;
-  margin-bottom: 5px;
-  border-radius: 2px;
+    top: 25%;
+    width: 120px;
+    height: auto;
+    z-index: 1;
 }
 
 /* Contenu */
-.content {
+.texte {
   position: relative;
   z-index: 1;
   max-width: 320px;
+  display: flex;
+  flex-direction: column; /* empile les éléments verticalement */
+  align-items: center;    /* centre horizontalement tout le contenu */
+  text-align: center;     /* centre le texte */
+  gap: 16px;              /* espace entre subtitle, h2 et bouton */
 }
 
 .subtitle {
   font-size: 12px;
   letter-spacing: 2px;
-  margin-bottom: 16px;
   opacity: 0.9;
+  margin: 0;
 }
 
-h1 {
-  font-size: 22px;
+h2 {
+  font-size: 19px;
   line-height: 1.4;
-  margin-bottom: 24px;
   text-transform: uppercase;
+  margin: 0;
 }
+
+.cta-button { /* si tu veux ajuster le bouton */
+  margin-top: 16px; /* espace au-dessus du bouton */
+}
+
 
 
 </style>
