@@ -1,11 +1,5 @@
 <template>
   <div class="accueil">
-    <!-- Menu burger -->
-    <div class="burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
 
     <!-- Contenu central -->
     <div class="content">
@@ -17,14 +11,23 @@
         TOUTES VOS VACHES.
       </h1>
 
-      <button class="cta">Découvrir</button>
+        <Cta @click="goToCowLis">
+            Découvrir
+        </Cta>
     </div>
   </div>
 </template>
 
 
 <script setup>
+    import { useRouter } from 'vue-router'
+    import Cta from './components/cta.vue'
 
+    const router = useRouter()
+
+    function goToCowLis() {
+    router.push({ name: 'CowList' }) // ou router.push('/liste')
+    }
 </script>
 
 <style scoped>
@@ -86,15 +89,6 @@ h1 {
   text-transform: uppercase;
 }
 
-/* Bouton */
-.cta {
-  background: #b8c85a;
-  border: none;
-  color: #2f3b1f;
-  padding: 12px 28px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: bold;
-}
+
 </style>
 
