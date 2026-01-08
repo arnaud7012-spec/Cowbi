@@ -6,16 +6,33 @@
 
 <template>
   <NavBar />
-  <router-view />
+  <div class="main-content">
+    <router-view />
+  </div>
 </template>
 
 <style>
-  html, body {
+@font-face {
+  font-family: 'Comic CAT';
+  src: url('./assets/font/Comic_CAT.otf') format('opentype');
+}
+
+  html {
+    height: 100%;
     margin: 0;
     padding: 0;
   }
   body {
+    font-family: 'Comic CAT', sans-serif;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content {
+    flex: 1;
+    overflow: auto;
   }
 </style>

@@ -9,7 +9,7 @@
 
       <h2>
         L'APPLICATION QUI rassemble,<br />
-        explore ET célèbre<br />
+        explore ET celebre<br />
         TOUTES VOS VACHES.
       </h2>
 
