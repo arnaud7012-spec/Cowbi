@@ -36,7 +36,7 @@ const router = createRouter({
       component: Formulaire
     },
     {
-      path: '/mini-jeu',
+      path: '/minijeu',
       name: 'MiniJeu',
       component: MiniJeu
     }
