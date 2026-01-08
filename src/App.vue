@@ -1,10 +1,12 @@
 <script setup>
   import { ref } from 'vue'
   import Liste from './Liste.vue'
+  import NavBar from './components/nav.vue'
 </script>
 
 <template>
-  <Liste />
+  <NavBar />
+  <router-view />
 </template>
 
 <style>
