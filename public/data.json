@@ -2,49 +2,49 @@
   {
     "id": 1,
     "nom": "Marguerite",
-    "race": "Holstein",
+    "race": "brangus",
     "age": 4,
     "description": "Une vache doucec connue pour son lait abandant.",
-    "image": "/img/brangus.jpg"
+    "image": "brangus"
   },
   {
     "id": 2,
     "nom": "Brigitte",
-    "race": "Normande",
+    "race": "charolaise",
     "age": 4,
     "description": "Une vache doucec connue pour son lait abandant.",
-    "image": "/img/vache2.jpg"
+    "image": "/img/charolaise.jpg"
   },
   {
     "id": 3,
     "nom": "Marguerite",
-    "race": "Holstein",
-    "age": 4,
+    "race": "montbeliarde",
+    "age": 3,
     "description": "Une vache doucec connue pour son lait abandant.",
-    "image": "/img/vache1.jpg"
+    "image": "/img/montbeliarde.jpg"
   },
   {
     "id": 4,
     "nom": "Marguerite",
-    "race": "Holstein",
-    "age": 4,
+    "race": "montbeliarde",
+    "age": 1,
     "description": "Une vache doucec connue pour son lait abandant.",
-    "image": "/img/vache1.jpg"
+    "image": "/img/montbeliarde.jpg"
   },
   {
     "id": 5,
     "nom": "Marguerite",
-    "race": "Holstein",
-    "age": 4,
+    "race": "Limousine",
+    "age": 2,
     "description": "Une vache doucec connue pour son lait abandant.",
-    "image": "/img/vache1.jpg"
+    "image": "/img/Limousine.jpg"
   },
   {
     "id": 6,
     "nom": "Marguerite",
-    "race": "Holstein",
-    "age": 4,
+    "race": "brangus",
+    "age": 8,
     "description": "Une vache doucec connue pour son lait abandant.",
-    "image": "/img/vache1.jpg"  
+    "image": "/img/brangus.jpg"  
   }
 ]
