@@ -12,7 +12,6 @@
       <ul :class="['nav-links', { open: menuOpen }]">
         <li><router-link to="/" @click="closeMenu">Accueil</router-link></li>
         <li><router-link to="/liste" @click="closeMenu">Liste</router-link></li>
-        <li><router-link to="/detail" @click="closeMenu">Détail</router-link></li>
         <li><router-link to="/formulaire" @click="closeMenu">Formulaire</router-link></li>
       </ul>
     </div>
@@ -106,6 +105,7 @@ function closeMenu() {
     position: absolute;
     top: 60px;
     right: 0;
+    z-index: 10;
     flex-direction: column;
     background-color: #333;
     width: 200px;
@@ -119,16 +119,3 @@ function closeMenu() {
   }
 }
 </style>
-4️⃣ Utilisation dans App.vue
-vue
-Copier le code
-<template>
-  <div id="app">
-    <NavBar />
-    <router-view />
-  </div>
-</template>
-
-<script setup>
-import NavBar from './components/NavBar.vue'
-</script>
