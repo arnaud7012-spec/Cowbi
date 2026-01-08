@@ -13,6 +13,7 @@
         <li><router-link to="/" @click="closeMenu">Accueil</router-link></li>
         <li><router-link to="/liste" @click="closeMenu">Liste</router-link></li>
         <li><router-link to="/formulaire" @click="closeMenu">Formulaire</router-link></li>
+        <li><router-link to="/minijeu" @click="closeMenu">Mini-Jeu</router-link></li>
       </ul>
     </div>
   </nav>

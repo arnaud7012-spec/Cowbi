@@ -5,6 +5,7 @@ import CowList from '../Liste.vue'
 import CowDetail from '../Details.vue'
 import Accueil from '../Accueil.vue'
 import Formulaire from '../Formulaire.vue'
+import MiniJeu from '../MiniJeu.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/formulaire',
       name: 'Formulaire',
       component: Formulaire
+    },
+    {
+      path: '/mini-jeu',
+      name: 'MiniJeu',
+      component: MiniJeu
     }
   ]
 })
