@@ -111,7 +111,7 @@ watchEffect(() => {
 .cow-detail {
   min-height: 100vh;
   background-color: #a67a60;
-  padding: 103px 20px 40px;
+  padding: 190px 20px 40px;
   color: white;
   display: flex;
   flex-direction: column;
