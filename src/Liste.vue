@@ -1,5 +1,6 @@
 <template>
   <div class="cow-list">
+    <h2>Nos vaches</h2>
     <div
       v-for="cow in cows"
       :key="cow.id"
@@ -20,15 +21,16 @@
         <p>{{ cow.race }}</p>
       </div>
 
-      <!-- Bouton SVG en bas à gauche -->
+      <!-- Bouton détail -->
       <ButtonList :id="cow.id" />
 
-      <!-- Bouton supprimer -->
-      <button
+      <!-- Bouton suppression (uniquement si ajoutée) -->
+      <ButtonList
         v-if="cow.added"
-        class="delete-btn"
-        @click="removeCow(cow.id)"
+        type="delete"
+        @delete="removeCow(cow.id)"
       />
+
     </div>
   </div>
 
@@ -79,10 +81,16 @@ function removeCow(id) {
 </script>
 
 <style scoped>
+  h2 {
+  text-align: center;
+  font-size: 22px;
+  color: #F2F2F0;
+  margin-top: -15%;
+}
 /* Fond général */
 .cow-list {
   min-height: 100vh;
-  padding: 120px 20px 140px;
+  padding: 135px 20px 140px;
   background-color: #a67a60;
   display: flex;
   flex-direction: column;

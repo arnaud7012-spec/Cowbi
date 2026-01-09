@@ -1,7 +1,7 @@
 <template>
   <div class="accueil">
     <div id="logo">
-        <img src="" alt="Logo de Cowbi">
+        <img src="/public/img/logocowbi.svg" alt="Logo de Cowbi">
     </div>
     <!-- Contenu central -->
     <div class="texte">
@@ -58,7 +58,7 @@
 #logo {
   position: absolute;
     top: 25%;
-    width: 120px;
+    width: 93px;
     height: auto;
     z-index: 1;
 }

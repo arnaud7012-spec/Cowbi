@@ -43,7 +43,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Cta from '@/components/cta.vue'
 import tacheVache from '@/assets/tachevache.svg'
 
-const NB_TACHES = 20
+const NB_TACHES = 54
 const taches = ref([])
 const intrusIndex = ref(null)
 const chances = ref(3)

@@ -1,9 +1,6 @@
 <template>
   <nav class="navbar">
     <div class="nav-container">
-      <div class="logo">
-        <router-link to="/">MonApp</router-link>
-      </div>
       <button class="burger" @click="toggleMenu">
         <span :class="{ open: menuOpen }"></span>
         <span :class="{ open: menuOpen }"></span>
@@ -53,20 +50,6 @@ function closeMenu() {
 }
 
 
-/* LOGO (optionnel, discret) */
-.logo {
-  position: absolute;
-  top: 24px;
-  left: 20px;
-  pointer-events: auto;
-}
-
-.logo a {
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  text-decoration: none;
-}
 
 /* TACHE MENU */
 .nav-container::after {
@@ -121,26 +104,22 @@ function closeMenu() {
 /* LIENS */
 .nav-links {
   position: fixed;
-  top: 0;
+  top: -20px;
   right: 0;
   height: 100vh;
   width: 70%;
   max-width: 260px;
-  padding: 120px 24px;
+  padding: 150px 24px;
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 
   background-color: #402921;
-  background-image: url('/assets/tachemenu.svg');
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 80%;
-
   transform: translateX(100%);
+  
+
   transition: transform 0.3s ease;
-  z-index: 90;
 }
 
 /* Menu ouvert */
