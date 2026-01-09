@@ -34,89 +34,138 @@ function closeMenu() {
 </script>
 
 <style scoped>
+/* NAVBAR GLOBALE */
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 1000; /* AU-DESSUS DE TOUT */
 }
 
+
+/* CONTENEUR */
 .nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* LOGO (optionnel, discret) */
+.logo {
+  position: absolute;
+  top: 24px;
+  left: 20px;
+  pointer-events: auto;
 }
 
 .logo a {
   color: white;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-decoration: none;
 }
 
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  border: none;
-  background: none;
-  cursor: pointer;
+/* TACHE MENU */
+.nav-container::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 220px;
+  height: 160px;
+  background-image: url('@/assets/tachemenu.svg'); /* ou .png */
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  pointer-events: none; /* déco seulement */
 }
 
+
+/* BURGER */
+.burger {
+  position: absolute;
+  top: 36px;
+  right: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2; /* AU-DESSUS DE LA TACHE */
+}
+
+
 .burger span {
-  display: block;
-  width: 25px;
+  width: 26px;
   height: 3px;
-  background-color: white;
+  background-color: #a67a60;
+  border-radius: 2px;
   transition: 0.3s;
 }
 
+/* Animation burger */
 .burger span.open:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(6px, 6px);
 }
 .burger span.open:nth-child(2) {
   opacity: 0;
 }
 .burger span.open:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
+/* LIENS */
 .nav-links {
-  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 70%;
+  max-width: 260px;
+  padding: 120px 24px;
   list-style: none;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  background-color: #a67a60;
+  background-image: url('/public/img/tachemenu.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 80%;
+
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 90;
 }
 
+/* Menu ouvert */
+.nav-links.open {
+  transform: translateX(0);
+}
+
+/* Liens */
 .nav-links li a {
   color: white;
   text-decoration: none;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .nav-links li a.router-link-active {
   font-weight: bold;
-  text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .burger {
-    display: flex;
-  }
-
+/* Desktop (menu caché si besoin plus tard) */
+@media (min-width: 769px) {
   .nav-links {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    z-index: 10;
-    flex-direction: column;
-    background-color: #333;
-    width: 200px;
-    padding: 1rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-  }
-
-  .nav-links.open {
-    transform: translateX(0);
+    display: none;
   }
 }
+
 </style>

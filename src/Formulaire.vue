@@ -9,7 +9,7 @@
       </select>
       <input v-model.number="nouvelleVache.age" type="number" placeholder="Âge" required />
       <textarea v-model="nouvelleVache.description" placeholder="Description"></textarea>
-      <button type="submit">Ajouter</button>
+      <Cta type="submit">Ajouter</Cta>
     </form>
 
     <h2>Liste des vaches</h2>
@@ -25,6 +25,7 @@
     import { ref, reactive, onMounted } from 'vue'
     import initialVaches from '../public/data.json'  // JSON initial
     import { useRouter } from 'vue-router'
+    import Cta from './components/cta.vue'
     
 
     const router = useRouter()
@@ -72,50 +73,82 @@
 
 <style scoped>
     .form-container {
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: #A67A60;
-    padding: 20px;
-    border-radius: 12px;
+  max-width: 480px;
+  padding: 24px;
+  background: #A67A60;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* Titres */
+h1 {
+  text-align: center;
+  font-size: 22px;
+  color: #F2F2F0;
+  margin-top: 20%;
+}
+
+h2 {
+  font-size: 18px;
+  color: #F2F2F0;
+  margin-top: 12px;
+}
+
+/* Formulaire */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-input, select, textarea {
-    padding: 0.5rem;
-    font-size: 1rem;
-    width: 100%;
-    border-radius: 8px;
-    border: none;
+input,
+select,
+textarea {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid #d4d4d4;
+  outline: none;
+  background: white;
 }
 
-button {
-    padding: 0.5rem;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
+textarea {
+  border-radius: 16px;
+  resize: none;
+  min-height: 80px;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #b8c85a;
+}
+
+/* Bouton */
+.cta-button { /* si tu veux ajuster le bouton */
+  margin-top: 16px; /* espace au-dessus du bouton */
+  margin-left: 27%;
+}
+
+/* Liste des vaches */
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 li {
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #2f3b1f;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-h1, h2 {
-    margin: 0 0 10px 0;
-}
 </style>

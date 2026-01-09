@@ -1,64 +1,75 @@
 <template>
   <div class="cow-list">
-    <router-link
+    <div
       v-for="cow in cows"
       :key="cow.id"
-      :to="`/cows/${cow.id}`"
       class="cow-card"
     >
-      <img
-        :src="`/public/img/${cow.race}.jpg`"
-        :alt="cow.nom"
-        class="cow-image"
-      />
+      <!-- Image cliquable -->
+      <router-link :to="`/cows/${cow.id}`">
+        <img
+          :src="`/public/img/${cow.race}.jpg`"
+          :alt="cow.nom"
+          class="cow-image"
+        />
+      </router-link>
+
+      <!-- Overlay -->
       <div class="overlay">
         <h2>{{ cow.nom }}</h2>
         <p>{{ cow.race }}</p>
       </div>
-      <button v-if="cow.added" @click="removeCow(cow.id)">Supprimer</button>
-    </router-link>
-    
+
+      <!-- Bouton SVG en bas à gauche -->
+      <ButtonList :id="cow.id" />
+
+      <!-- Bouton supprimer -->
+      <button
+        v-if="cow.added"
+        class="delete-btn"
+        @click="removeCow(cow.id)"
+      />
+    </div>
   </div>
-  <Cta @click="goToFormulaire">Ajouter</Cta>
+
+  <!-- CTA Ajouter -->
+  <Cta class="cta" @click="goToFormulaire">Ajouter</Cta>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import Cta from './components/cta.vue'
 import { useRouter } from 'vue-router'
+import Cta from './components/cta.vue'
+import ButtonList from './components/buttonlist.vue'
+
 const router = useRouter()
 const cows = ref([])
 
 onMounted(async () => {
   try {
-    // 1️⃣ Charger le JSON initial
     const response = await fetch('/data.json')
     const initialCows = await response.json()
 
-    // 2️⃣ Charger les vaches ajoutées dans localStorage
     const savedCows = localStorage.getItem('cows')
     const addedCows = savedCows ? JSON.parse(savedCows) : []
 
-    // 3️⃣ Ne garder que les nouvelles vaches (éviter doublons)
-    const filteredAddedCows = addedCows.filter(ac => 
+    const filteredAddedCows = addedCows.filter(ac =>
       !initialCows.some(ic => ic.id === ac.id)
     )
 
-    // 4️⃣ Combiner initial + nouvelles
     cows.value = [...initialCows, ...filteredAddedCows]
   } catch (err) {
     console.error('Erreur chargement JSON', err)
   }
 })
 
- function goToFormulaire() {
-    router.push({ name: 'Formulaire' }) // ou router.push('/liste')
-    }
+function goToFormulaire() {
+  router.push({ name: 'Formulaire' })
+}
+
 function removeCow(id) {
-  // 1️⃣ Filtrer le tableau local pour enlever la vache
   cows.value = cows.value.filter(c => c.id !== id)
 
-  // 2️⃣ Mettre à jour localStorage
   const saved = localStorage.getItem('cows')
   const localCows = saved ? JSON.parse(saved) : []
 
@@ -68,56 +79,90 @@ function removeCow(id) {
 </script>
 
 <style scoped>
-body {
-    margin: 0;
-    padding: 0;
-}
-
+/* Fond général */
 .cow-list {
-    padding-top: 100px;
-    background-color: #A67A60;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
+  min-height: 100vh;
+  padding: 120px 20px 140px;
+  background-color: #a67a60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
 }
 
+/* Carte */
 .cow-card {
-    position: relative;
-    overflow: hidden;
-    width: 70%;
-    border-radius: 12px;
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  height: 160px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
+/* Image */
 .cow-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
+/* Tache */
 .overlay {
-    position: absolute;
-    top: 0;
-    right: -5px;
-    padding: 12px;
-    width: 50%;
-    height: 100%;
-    background-image: url('/public/img/tache_liste.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    text-align: end;
-    color: white;
+  position: absolute;
+  top: 0;
+  right: -6px;
+  width: 40%;
+  height: 100%;
+  background-image: url('/public/img/tache_liste.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: right;
+  color: white;
+  z-index: 2;
 }
 
-h2 {
-    margin: 0;
-    font-size: 1.2rem;
+/* Texte */
+.overlay h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-p {
-    margin: 4px 0 0;
-    font-size: 0.9rem;
+.overlay p {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
 }
+
+/* Bouton supprimer */
+.delete-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e74c3c;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+}
+
+/* CTA */
+.cta {
+  position: fixed;
+  bottom: 32px;
+  left: 30%;
+  z-index: 10;
+}
+
 </style>
