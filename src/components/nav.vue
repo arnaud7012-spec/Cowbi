@@ -132,8 +132,8 @@ function closeMenu() {
   flex-direction: column;
   gap: 24px;
 
-  background-color: #a67a60;
-  background-image: url('/public/img/tachemenu.png');
+  background-color: #402921;
+  background-image: url('/assets/tachemenu.svg');
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 80%;

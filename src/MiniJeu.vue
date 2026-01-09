@@ -120,6 +120,9 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+h1{
+  margin-top: 20%;
+}
 .Jeu {
   width: 100%;
   max-width: 375px;
